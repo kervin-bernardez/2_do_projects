@@ -29,6 +29,16 @@ def encode(texts, shift):
             ntext.append(dicts[text])
     return "".join(ntext)
 
+#enter inputs
+text = input("Enter filename:\n" ) #e.g. test.txt
+shift = int(input("Enter the number of places you want to shift:\n" )) #e.g. -2
+#texts = "Hello World A123456 @{* Ωñæ"
+
+#open file
+with open(text, 'r') as filename:
+    texts = filename.read().replace('\n', ' ')
+print(encode(texts, shift))
+
 
 #shift = -2
 #texts = "Hello World A123456 @{* Ωñæ"
