@@ -13,6 +13,7 @@ def encode(texts, shift):
     letters = "abcdefghijklmnopqrstuvwxyz"
     numbers = "0123456789"
     symbols = "[]{}()+-*/:;<>,.?!_@#"
+    shift = int(shift)
     # make shifted list
     s_letters = shift_list(letters, shift) + shift_list(letters.upper(), shift)
     s_numbers = shift_list(numbers, shift)
@@ -28,6 +29,7 @@ def encode(texts, shift):
         else:
             ntext.append(dicts[text])
     return "".join(ntext)
+<<<<<<< Updated upstream
 
 #enter inputs
 text = input("Enter filename:\n" ) #e.g. test.txt
@@ -55,3 +57,5 @@ Optimize code
 Open file to encrypt
 Test more 
 """
+=======
+>>>>>>> Stashed changes
