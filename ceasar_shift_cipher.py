@@ -2,7 +2,7 @@ from collections import deque
 
 
 def shift_list(paramater, shift):
-    #
+    # use deque datatype and rotate list
     shifted = deque(paramater)
     shifted.rotate(shift)
     return shifted
@@ -31,12 +31,13 @@ def encode(texts, shift):
     return "".join(ntext)
 
 
-# enter inputs
-text = input("Enter filename:\n")  # e.g. test.txt
-shift = int(input("Enter the number of places you want to shift:\n"))  # e.g. -2
+def run():
+    # enter inputs
+    input_file = input("Enter filename:\n")
+    input_shift = input("Enter the number of places you want to shift:\n")
 
-# open file
-with open(text, 'r') as filename:
-    texts = filename.read().splitlines()
-    for text in texts:
-        print(encode(text, shift))
+    # open file
+    with open(input_file, encoding='utf-8', errors='replace') as filename:
+        texts = filename.read().splitlines()
+        for text in texts:
+            print(encode(text, input_shift))

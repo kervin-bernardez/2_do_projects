@@ -1,5 +1,5 @@
 import unittest
-from simple_encrypt import encode
+from ceasar_shift_cipher import encode
 
 
 class TestEncode(unittest.TestCase):
@@ -43,6 +43,18 @@ class TestEncode(unittest.TestCase):
         testcase = "abcd"
         expected = "efgh"
         shift = -4.9
+        self.assertEqual(encode(testcase, shift), expected)
+
+    def test_big_shift(self):
+        testcase = "Hello World"
+        expected = "Dahhk Sknhz"
+        shift = -100
+        self.assertEqual(encode(testcase, shift), expected)
+
+    def test_bigger_shift(self):
+        testcase = "Hello World"
+        expected = "Tqxxa Iadxp"
+        shift = -1000
         self.assertEqual(encode(testcase, shift), expected)
 
 
