@@ -35,9 +35,14 @@ def run():
     # enter inputs
     input_file = input("Enter filename:\n")
     input_shift = input("Enter the number of places you want to shift:\n")
-
+    coded = []
     # open file
-    with open(input_file, encoding='utf-8', errors='replace') as filename:
+    with open(input_file, "r", encoding='utf-8', errors='replace') as filename:
         texts = filename.read().splitlines()
         for text in texts:
-            print(encode(text, input_shift))
+            code = encode(text, input_shift)
+            coded.append(code)
+    # rewrite file
+    with open(input_file, "w", encoding='utf-8', errors='replace') as filename:
+        for code in coded:
+            filename.write(code + "\n")
