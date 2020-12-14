@@ -54,6 +54,6 @@ def main():
 
 
 def alt_main(texts, shift):
-    dicts = var(shift)
+    dicts = var(int(shift))
     code = encode(texts, dicts)
     return code
