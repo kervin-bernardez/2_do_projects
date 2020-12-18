@@ -15,6 +15,3 @@ def generate(*args):
     # generate and returns password
     password = ''.join([random.choice(all) for _ in range(length)])
     return(password)
-
-
-print(generate())
