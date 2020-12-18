@@ -7,7 +7,7 @@ def generate(*args):
     letters = "abcdefghijklmnopqrstuvwxyz"
     numb_symbs = "0123456789[]{}()*;/,._-"
     all = letters + letters.upper() + numb_symbs
-    # check for *args else go to default lenght
+    # check for *args else go to default length
     if len(args) != 0:
         length = args[0]
     else:
