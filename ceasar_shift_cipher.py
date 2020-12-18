@@ -38,8 +38,8 @@ def encode(texts, dicts):
 def main():
     # enter inputs
     file_in = input("Enter filename:\n")
-    shift = int(input("Enter the number of places you want to shift:\n"))
-    dicts = var(shift)
+    shift = input("Enter the number of places you want to shift:\n")
+    dicts = var(int(shift))
     coded = []
     # open file
     with open(file_in, "r", encoding='utf-8', errors='replace') as filename:
