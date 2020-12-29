@@ -35,7 +35,13 @@ def encode(texts, dicts):
     return line
 
 
-def main():
+def text_coder(texts, shift):
+    dicts = var(int(shift))
+    code = encode(texts, dicts)
+    return code
+
+
+def textfile_coder():
     # enter inputs
     file_in = input("Enter filename:\n")
     shift = input("Enter the number of places you want to shift:\n")
@@ -51,9 +57,3 @@ def main():
     with open(file_in, "w", encoding='utf-8', errors='replace') as filename:
         for code in coded:
             filename.write(code + "\n")
-
-
-def alt_main(texts, shift):
-    dicts = var(int(shift))
-    code = encode(texts, dicts)
-    return code

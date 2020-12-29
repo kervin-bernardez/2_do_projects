@@ -6,7 +6,7 @@ csv.register_dialect('MyDialect', quotechar='"', skipinitialspace=True,
                      quoting=csv.QUOTE_NONE, lineterminator='\n', strict=True)
 
 
-def csv_to_json(csvfile):
+def convert(csvfile):
     data = []
     with open(csvfile, "r") as csv_file:
         csv_reader = csv.DictReader(csv_file, dialect='MyDialect')
@@ -16,8 +16,8 @@ def csv_to_json(csvfile):
         return datastring
 
 
-def write_json(csvfile):
-    datastring = csv_to_json(csvfile)
+def write(csvfile):
+    datastring = convert(csvfile)
     filename = os.path.splitext(csvfile)[0]+".json"
     with open(filename, 'w') as dict_json:
         dict_json.writelines(datastring)
