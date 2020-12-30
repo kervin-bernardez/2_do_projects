@@ -1,34 +1,33 @@
 import hashlib
 
 
-def hasher(texts):
-    hash_algo = ["md5", "sha1", "sha256"]
+def hasher(texts, *args):
+    if len(args) != 0:
+        hash_algo = [args[0]]
+    else:
+        hash_algo = ["md5", "sha1", "sha256"]
     hash_list = []
     for algo in hash_algo:
         if algo == "md5":
             hash = hashlib.md5(texts)
         elif algo == "sha1":
             hash = hashlib.sha1(texts)
-        else:
+        elif algo == "sha256":
             hash = hashlib.sha256(texts)
+        else:
+            return False
         hash_list.append(hash.hexdigest())
     return hash_list
 
 
-def text_hasher(texts):
+def text_hasher(texts, *args):
     encoded = texts.encode()
-    x = hasher(encoded)
-    return x
+    hash_list = hasher(encoded, *args)
+    return hash_list
 
 
-def file_hasher(file_in):
+def file_hasher(file_in, *args):
     with open(file_in, "rb") as filename:
         encoded = filename.read()
-        x = hasher(encoded)
-        return x
-
-
-def print_hash(hash_list):
-    print("MD5 Hash: {}".format(hash_list[0]))
-    print("SHA1 Hash: {}".format(hash_list[1]))
-    print("SHA256 Hash: {}".format(hash_list[2]))
+        hash_list = hasher(encoded, *args)
+        return hash_list
