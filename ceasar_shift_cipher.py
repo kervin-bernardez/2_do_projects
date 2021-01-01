@@ -1,30 +1,25 @@
 from collections import deque
 
 
-def shift_list(paramater, shift):
-    # returns shifted list
+def shifter(paramater, shift):
     shifted = deque(paramater)
     shifted.rotate(shift)
     return shifted
 
 
-def var(shift):
-    # var init
+def var_init(shift):
     letters = "abcdefghijklmnopqrstuvwxyz"
     numbers = "0123456789"
     symbols = "[]{}()+-*/:;<>,.?!_@#"
-    # var shift
-    s_letters = shift_list(letters, shift) + shift_list(letters.upper(), shift)
-    s_numbers = shift_list(numbers, shift)
-    s_symbols = shift_list(symbols, shift)
-    # returns dictionary {"var init": "var shift"}
+    s_letters = shifter(letters, shift) + shifter(letters.upper(), shift)
+    s_numbers = shifter(numbers, shift)
+    s_symbols = shifter(symbols, shift)
     dicts = dict(zip(letters+letters.upper()+numbers+symbols,
                      s_letters+s_numbers+s_symbols))
     return dicts
 
 
-def encode(texts, dicts):
-    # returns replaced words
+def encoder(texts, dicts):
     line = ""
     keys = dicts.keys()
     for text in texts:
@@ -36,24 +31,21 @@ def encode(texts, dicts):
 
 
 def text_coder(texts, shift):
-    dicts = var(int(shift))
-    code = encode(texts, dicts)
+    dicts = var_init(int(shift))
+    code = encoder(texts, dicts)
     return code
 
 
 def textfile_coder():
-    # enter inputs
     file_in = input("Enter filename:\n")
     shift = input("Enter the number of places you want to shift:\n")
-    dicts = var(int(shift))
+    dicts = var_init(int(shift))
     coded = []
-    # open file
     with open(file_in, "r", encoding='utf-8', errors='replace') as filename:
         texts = filename.read().splitlines()
         for text in texts:
-            code = encode(text, dicts)
+            code = encoder(text, dicts)
             coded.append(code)
-    # write file
     with open(file_in, "w", encoding='utf-8', errors='replace') as filename:
         for code in coded:
             filename.write(code + "\n")
